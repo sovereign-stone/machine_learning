@@ -1,15 +1,14 @@
-import requests
 import json
-import redis
+import requests
+from basic.basic_conn import ConnectRedis
 
 
 class HandlerMisSensitive(object):
     def __init__(self):
-        self.ydy_red = redis.StrictRedis(host='10.125.0.28', port=6379, db=1, password='soc-ti-redis',
-                                         decode_responses=True, charset='UTF-8', encoding='UTF-8')
+        self.ydy_red = ConnectRedis(db=1)
         self.baidu_token = '24.fafa23f8f2bf8379d6c9da116d75664a.2592000.1715320328.282335-30118490'
 
-    def baidu_correct(self, text):
+    def baidu_corrector(self, text):
         url = "https://aip.baidubce.com/rpc/2.0/nlp/v2/text_correction?charset=&access_token=" + self.baidu_token
 
         payload = json.dumps({"text": text})
@@ -31,7 +30,7 @@ class HandlerMisSensitive(object):
         con6 = '报应接中迩来，这块名表带带相传'
         con7 = '在这个五彩斑斓的世界里，年轻人们如同蝴蝶般自由地飞舞着，追逐着光芒和梦想。他们是生命中最美丽的花朵，却又像是一群迷失在迷宫中的小鸟，寻找着归宿。他们的心灵，像是一池湖水，波澜起伏，隐藏着无尽的秘密和欲望。他们的眼神，仿佛是闪烁的星星，充满了对未来的渴望和对世界的好奇。在这个快节奏的时代，他们被时光的车轮推向前行，无法停歇，无法回头。他们是青春的使者，是激情的火焰，是希望的载体。让我们一起为这群青年呐喊，让我们一起为他们点赞，因为他们是明天的主人，是未来的希望！'
         con8 = '河北省赵县的洨河上，有一座世界文明的石拱桥，叫安济桥，又叫赵州桥。'
-        # self.handler_mis_sensitive(text=con8)
+        # self.baidu_corrector(text=con8)
 
 
 if __name__ == '__main__':
