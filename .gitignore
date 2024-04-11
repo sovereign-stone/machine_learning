@@ -1,11 +1,12 @@
-*.idea/
 *.pyc
 *.log
 *.html
 *.xlsx
-*.png
 *.pdf
 *.csv
-*__pycache__/
-/log/
-/data/
+*.env
+*.idea/
+**/__pycache__/
+**/log/
+**/file/
+**/temp/
