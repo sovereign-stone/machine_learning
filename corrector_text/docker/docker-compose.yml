@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  pycorrector:
+    image: shibing624/pycorrector:0.0.2
+    container_name: pycorrector_text
+    volumes:
+      - ~/.pycorrector:/root/.pycorrector
+    stdin_open: true
+    tty: true
